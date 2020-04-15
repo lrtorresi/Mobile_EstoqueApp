@@ -36,6 +36,7 @@ export default function Login() {
           keyboardType="email-address"
           autoCapitalize="none"
           autoCorrect={false}
+          returnKeyType={"go"}
         />
 
         <TextInput style={style.Input}
@@ -44,6 +45,7 @@ export default function Login() {
           password={true}
           autoCapitalize="none"
           autoCorrect={false}
+          returnKeyType={"go"}
         />
 
         <TouchableOpacity style={style.button} onPress={navigateToListProduct}>

@@ -32,7 +32,7 @@ export default StyleSheet.create({
     width: 300,
     height: 42,
     backgroundColor: '#bab2b2',
-    marginTop: 40,
+    marginTop: 30,
     borderRadius: 4,
     alignItems: 'center',
     justifyContent: 'center'

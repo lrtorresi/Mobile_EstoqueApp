@@ -24,67 +24,40 @@ export default StyleSheet.create({
     },
 
     Input: {
-        justifyContent: 'center',
-        left: 30,
-        width: 300,
-        height: 35,
-        marginTop: 8,
-        backgroundColor: '#ebebe0',
-        fontSize: 15,
+        marginTop: 20,
+        left: 25,
+        width: 320,
+        height: 20,
+        backgroundColor: 'transparent',
+        fontSize: 16,
         fontWeight: 'bold',
+        borderRadius: 3,
     },
 
-    alertVencido:{
-        marginTop: 10,
-        fontSize: 15,
-        marginLeft: 12,
-        color: 'red',
-    },
-
-    alertaVencer:{
-        color:'#999900',
-    },
-
-    incident: {
-        height: 100,
+    label: {
+        marginLeft: 25,
+        marginTop: 25,
         top: 10,
-        padding: 10,
-        marginBottom: 5,
-        borderColor: '#000000',
-        backgroundColor: '#e1e1d0',
-        
+        color: '#000000',
+        fontSize: 20
     },
 
-    incidentProperty: {
-        fontSize: 14,
-        color: '#41414d',
+    button: {
+        marginLeft: 35,
+        width: 300,
+        height: 42,
+        backgroundColor: '#bab2b2',
+        marginTop: 50,
+        borderRadius: 4,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+
+    buttonText: {
+        fontSize: 18,
         fontWeight: 'bold',
-        marginTop: 10,
     },
 
-    incidentValue: {
-        marginTop: 8,
-        fontSize: 15,
-        //color: '#737380',
-        color: 'red'
-    },
-
-    detailsButton: {
-        color: '#41414d',
-        fontWeight: 'bold',
-        fontSize: 11,
-        paddingHorizontal: 250,
-        top: -60,
-    },
-
-    detailsValue:{
-        marginTop: 8,
-        fontSize: 15,
-        //color: '#737380',
-        color: 'red',
-        paddingHorizontal: 250,
-        top: -60,
-    },
 
     addProduct: {
         position: 'absolute',
@@ -128,5 +101,5 @@ export default StyleSheet.create({
         fontWeight: 'bold',
     }
 
-    
+
 });

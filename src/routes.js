@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import Recover from './pages/Recover';
 import NewUser from './pages/NewUser';
 import ListProduct from './pages/ListProduct';
+import CreateProduct from './pages/CreateProduct';
 
 
 
@@ -20,6 +21,8 @@ export default function Routes() {
                 <AppStack.Screen name="Recover" component={Recover} />
                 <AppStack.Screen name="NewUser" component={NewUser} />
                 <AppStack.Screen name="ListProduct" component={ListProduct} />
+                <AppStack.Screen name="CreateProduct" component={CreateProduct} />
+                
                
             </AppStack.Navigator>
 

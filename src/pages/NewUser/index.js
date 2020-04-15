@@ -49,10 +49,11 @@ export default function NewUser() {
                     keyboardType="email-address"
                     autoCapitalize="none"
                     autoCorrect={false} placeholder="E-mail:"
+                    returnKeyType={"go"}
                 />
-                <TextInput style={style.form} password={true} placeholder="Senha:" />
-                <TextInput style={style.form} placeholder="Nome:" />
-                <TextInput style={style.form} keyboardType='numeric' placeholder="CNPJ / CPF:" />
+                <TextInput style={style.form} password={true} placeholder="Senha:" returnKeyType={"go"}/>
+                <TextInput style={style.form} placeholder="Nome:" returnKeyType={"go"} />
+                <TextInput style={style.form} keyboardType='numeric' placeholder="CNPJ / CPF:" returnKeyType={"go"}/>
             </View>
 
 
