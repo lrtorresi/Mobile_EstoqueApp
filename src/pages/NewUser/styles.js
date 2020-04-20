@@ -46,7 +46,7 @@ export default StyleSheet.create({
         width: 300,
         height: 42,
         backgroundColor: '#bab2b2',
-        marginTop: 30,
+        marginTop: 20,
         borderRadius: 4,
         padding: 10,
     },
@@ -55,6 +55,18 @@ export default StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
       },
+
+      createUser:{
+        marginTop: 50,
+        alignItems: 'center'
+      },
+
+      link:{
+        fontWeight: 'bold',
+        textDecorationLine: 'underline',
+        fontSize: 17
+      }
+
 
 
 });

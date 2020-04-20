@@ -69,6 +69,11 @@ export default StyleSheet.create({
         color: 'red'
     },
 
+    imgedit:{
+        top: -50,
+        left: 290,
+    },
+
     detailsButton: {
         color: '#41414d',
         fontWeight: 'bold',
