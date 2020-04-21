@@ -4,9 +4,16 @@ import Constants from 'expo-constants';
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ebebe0',
-        //paddingHorizontal: 24,
+        backgroundColor: "#fff",
     },
+
+    loader: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#fff"
+    },
+
 
     title: {
         paddingTop: Constants.statusBarHeight + 0,
@@ -14,6 +21,14 @@ export default StyleSheet.create({
         backgroundColor: '#153951',
         color: '#fff',
         fontSize: 20
+    },
+
+    list: {
+        top: 5,
+        paddingVertical: 4,
+        margin: 5,
+        backgroundColor: "#f3f3f3",
+        marginBottom: 80
     },
 
     subTitle: {

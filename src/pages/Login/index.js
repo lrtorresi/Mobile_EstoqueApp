@@ -9,8 +9,6 @@ import api from '../../services/api';
 
 
 
-
-
 export default class App extends React.Component {
 
 
@@ -83,12 +81,10 @@ export default class App extends React.Component {
           Password: this.state.password,
         });
 
-
-const id = (response.data).toString();
-        await AsyncStorage.setItem( "mykey", id);
-        
-
-
+        // Pegando o Id do usuario e salvando no AsyncStorage
+        const dados = response.data;
+        const Id = dados[0];
+        await AsyncStorage.setItem("mykey", Id["Id"]); 
 
 
         this.setState({ success: 'Login com sucesso! Redirecionando para o login', error: '' });

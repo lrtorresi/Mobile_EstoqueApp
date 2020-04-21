@@ -16,7 +16,7 @@ export function EditProduct() {
 
     //Função para ir para a pagina de Listar Produto 
     function navigateToListProduct() {
-        navigation.navigate('ListProduct');
+        navigation.goBack();
     }
 
     //Função para ir para a pagina de Listar Produto 

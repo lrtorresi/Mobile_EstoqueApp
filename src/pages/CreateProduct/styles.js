@@ -4,7 +4,7 @@ import Constants from 'expo-constants';
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ebebe0',
+        backgroundColor: '#f3f3f3',
         //paddingHorizontal: 24,
     },
 
