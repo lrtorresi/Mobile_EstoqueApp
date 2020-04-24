@@ -24,20 +24,21 @@ export default StyleSheet.create({
     },
 
     Input: {
-        marginTop: 20,
+        marginTop: 10,
         left: 25,
         width: 320,
-        height: 20,
+        height: 30,
         backgroundColor: 'transparent',
         fontSize: 16,
         fontWeight: 'bold',
         borderRadius: 3,
+        
     },
 
     label: {
         marginLeft: 25,
         marginTop: 25,
-        top: 10,
+        top: 0,
         color: '#000000',
         fontSize: 20
     },
@@ -47,7 +48,7 @@ export default StyleSheet.create({
         width: 300,
         height: 42,
         backgroundColor: '#bab2b2',
-        marginTop: 50,
+        marginTop: 20,
         borderRadius: 4,
         alignItems: 'center',
         justifyContent: 'center'

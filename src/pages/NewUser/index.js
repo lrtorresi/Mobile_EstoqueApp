@@ -1,6 +1,7 @@
 import React from 'react';
 import { Platform, View, Text, Image, ImageBackground, KeyboardAvoidingView, TouchableOpacity, Alert, StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
+
 import { TextInput, Button } from 'react-native-paper';
 import { useNavigation, StackActions, NavigationActions } from '@react-navigation/native';
 import style from './styles';

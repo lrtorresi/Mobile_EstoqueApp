@@ -11,6 +11,9 @@ import api from '../../services/api';
 
 export default class App extends React.Component {
 
+  static navigationOptions = {
+    title: 'Login',
+  }
 
   static navigationOptions = {
     header: null,
@@ -84,7 +87,7 @@ export default class App extends React.Component {
         // Pegando o Id do usuario e salvando no AsyncStorage
         const dados = response.data;
         const Id = dados[0];
-        await AsyncStorage.setItem("mykey", Id["Id"]); 
+        await AsyncStorage.setItem("mykey", Id["Id"]);
 
 
         this.setState({ success: 'Login com sucesso! Redirecionando para o login', error: '' });
@@ -159,7 +162,7 @@ export default class App extends React.Component {
 
 
 
-          <TouchableOpacity onPress={() => { }}>
+          <TouchableOpacity onPress={this.RecoverButtonPress.bind(this)}>
             <Text style={style.linkRecuperarSenha}>  Esqueceu sua senha ?</Text>
           </TouchableOpacity>
 

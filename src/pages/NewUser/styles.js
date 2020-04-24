@@ -46,7 +46,7 @@ export default StyleSheet.create({
         width: 300,
         height: 42,
         backgroundColor: '#bab2b2',
-        marginTop: 20,
+        marginTop: 15,
         borderRadius: 4,
         padding: 10,
     },

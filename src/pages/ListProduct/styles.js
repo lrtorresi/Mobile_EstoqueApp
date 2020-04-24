@@ -71,17 +71,35 @@ export default StyleSheet.create({
     },
 
     incidentProperty: {
-        fontSize: 14,
+        left: 15,
+        fontSize: 15,
         color: '#41414d',
         fontWeight: 'bold',
         marginTop: 10,
     },
 
-    incidentValue: {
+    incidentValueDue: {
+        left: 17,
         marginTop: 8,
         fontSize: 15,
         //color: '#737380',
         color: 'red'
+    },
+
+    incidentValueAlert: {
+        left: 17,
+        marginTop: 8,
+        fontSize: 15,
+        //color: '#737380',
+        color: '#999900'
+    },
+
+    incidentValue: {
+        left: 17,
+        marginTop: 8,
+        fontSize: 15,
+        //color: '#737380',
+        color: '#000000'
     },
 
     imgedit:{
@@ -89,20 +107,41 @@ export default StyleSheet.create({
         left: 290,
     },
 
+    imgAlert:{
+        top: -50,
+        left: 150,
+    },
+
     detailsButton: {
         color: '#41414d',
         fontWeight: 'bold',
-        fontSize: 11,
-        paddingHorizontal: 250,
+        fontSize: 14,
+        paddingHorizontal: 240,
+        top: -60,
+    },
+
+    detailsValueDue:{
+        marginTop: 8,
+        fontSize: 15,
+        //color: '#737380',
+        color: 'red',
+        paddingHorizontal: 255,
+        top: -60,
+    },
+
+    detailsValueAlert:{
+        marginTop: 8,
+        fontSize: 15,
+        color: '#999900',
+        paddingHorizontal: 255,
         top: -60,
     },
 
     detailsValue:{
         marginTop: 8,
         fontSize: 15,
-        //color: '#737380',
-        color: 'red',
-        paddingHorizontal: 250,
+        color: '#000000',
+        paddingHorizontal: 255,
         top: -60,
     },
 

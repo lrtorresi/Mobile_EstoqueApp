@@ -48,7 +48,7 @@ export default StyleSheet.create({
         width: 300,
         height: 42,
         backgroundColor: '#bab2b2',
-        marginTop: 50,
+        marginTop: 30,
         borderRadius: 4,
         alignItems: 'center',
         justifyContent: 'center'
@@ -93,6 +93,13 @@ export default StyleSheet.create({
         top: 35,
         left: 10,
         color: '#AAA0A0',
+        fontWeight: 'bold',
+    },
+
+    imgtrash:{
+        top: 25,
+        left: 170,
+        color: '#ff4040',
         fontWeight: 'bold',
     },
 

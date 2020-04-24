@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, StackNavigator  } from '@react-navigation/stack';
 
 
 const AppStack = createStackNavigator();
@@ -40,5 +40,4 @@ export default function Routes() {
        
     );
 }
-
-
+ 
