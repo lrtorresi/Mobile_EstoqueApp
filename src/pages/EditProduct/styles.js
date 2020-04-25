@@ -9,18 +9,31 @@ export default StyleSheet.create({
     },
 
     title: {
-        paddingTop: Constants.statusBarHeight + 0,
+        paddingTop: Constants.statusBarHeight + 5,
+        justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#153951',
+        backgroundColor: '#01273e',
         color: '#fff',
-        fontSize: 20
+        fontSize: 19.8,
+        fontWeight: 'bold',
     },
+
+    logo: {
+        top: -42,
+        left: 145,
+        width: 75,
+        height: 75,
+      },
 
     subTitle: {
         alignItems: 'center',
         marginTop: 5,
         color: '#fff',
         fontSize: 17
+    },
+
+    inputView: {
+        marginTop: -85,
     },
 
     Input: {
@@ -37,7 +50,7 @@ export default StyleSheet.create({
 
     label: {
         marginLeft: 25,
-        marginTop: 25,
+        marginTop: 20,
         top: 10,
         color: '#000000',
         fontSize: 20
@@ -48,7 +61,7 @@ export default StyleSheet.create({
         width: 300,
         height: 42,
         backgroundColor: '#bab2b2',
-        marginTop: 30,
+        marginTop: 25,
         borderRadius: 4,
         alignItems: 'center',
         justifyContent: 'center'
@@ -66,7 +79,7 @@ export default StyleSheet.create({
         right: 0,
         left: 0,
         bottom: 0,
-        backgroundColor: '#153951',
+        backgroundColor: '#01273e',
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
@@ -74,8 +87,9 @@ export default StyleSheet.create({
     listProductText: {
         left: 50,
         marginBottom: 5,
-        color: '#AAA0A0',
-        fontSize: 20,
+        //color: '#AAA0A0',
+        color: '#fff',
+        fontSize: 19.8,
         fontWeight: 'bold',
         textAlign: 'center',
     },
@@ -83,8 +97,9 @@ export default StyleSheet.create({
     createProductText: {
         right: 10,
         marginBottom: 10,
-        color: '#AAA0A0',
-        fontSize: 20,
+        //color: '#AAA0A0',
+        color: '#fff',
+        fontSize: 19.8,
         fontWeight: 'bold',
         textAlign: 'center',
     },
@@ -92,12 +107,12 @@ export default StyleSheet.create({
     imglist:{
         top: 35,
         left: 10,
-        color: '#AAA0A0',
+        color: '#fff',
         fontWeight: 'bold',
     },
 
     imgtrash:{
-        top: 25,
+        top: 15,
         left: 170,
         color: '#ff4040',
         fontWeight: 'bold',
@@ -106,7 +121,7 @@ export default StyleSheet.create({
     imgadd:{
         top: 35,
         right: 45,
-        color: '#AAA0A0',
+        color: '#fff',
         fontWeight: 'bold',
     }
 

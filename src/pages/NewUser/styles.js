@@ -10,12 +10,21 @@ export default StyleSheet.create({
     },
 
     title: {
-        paddingTop: Constants.statusBarHeight + 0,
+        paddingTop: Constants.statusBarHeight + 5,
+        justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#153951',
+        backgroundColor: '#01273e',
         color: '#fff',
-        fontSize: 20
+        fontSize: 19.8,
+        fontWeight: 'bold',
     },
+
+    logo: {
+        top: -42,
+        left: 145,
+        width: 75,
+        height: 75,
+      },
 
     subTitle: {
         alignItems: 'center',
@@ -25,7 +34,7 @@ export default StyleSheet.create({
     },
 
     formTextTitle: {
-        marginTop: 10,
+        marginTop: -30,
         fontSize: 19,
         color: '#000000',
         alignItems: 'center',
@@ -46,7 +55,7 @@ export default StyleSheet.create({
         width: 300,
         height: 42,
         backgroundColor: '#bab2b2',
-        marginTop: 15,
+        marginTop: 30,
         borderRadius: 4,
         padding: 10,
     },

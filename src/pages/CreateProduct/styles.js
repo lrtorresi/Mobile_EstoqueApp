@@ -4,17 +4,25 @@ import Constants from 'expo-constants';
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f3f3f3',
-        //paddingHorizontal: 24,
+        backgroundColor: "#f3f3f3",
     },
 
     title: {
-        paddingTop: Constants.statusBarHeight + 0,
+        paddingTop: Constants.statusBarHeight + 5,
+        justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#153951',
+        backgroundColor: '#01273e',
         color: '#fff',
-        fontSize: 20
+        fontSize: 19.8,
+        fontWeight: 'bold',
     },
+
+    logo: {
+        top: -42,
+        left: 145,
+        width: 75,
+        height: 75,
+      },
 
     subTitle: {
         alignItems: 'center',
@@ -35,6 +43,10 @@ export default StyleSheet.create({
         
     },
 
+    inputView: {
+        marginTop: -85,
+    },
+
     label: {
         marginLeft: 25,
         marginTop: 25,
@@ -48,7 +60,7 @@ export default StyleSheet.create({
         width: 300,
         height: 42,
         backgroundColor: '#bab2b2',
-        marginTop: 20,
+        marginTop: 35,
         borderRadius: 4,
         alignItems: 'center',
         justifyContent: 'center'
@@ -65,18 +77,19 @@ export default StyleSheet.create({
         right: 0,
         left: 0,
         bottom: 0,
-        backgroundColor: '#153951',
+        backgroundColor: '#01273e',
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
     },
 
     listProductText: {
-        left: 50,
-        marginBottom: 5,
-        color: '#AAA0A0',
+        //left: 50,
+        marginBottom: 7,
+        color: '#fff',
         fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center',
+        justifyContent: 'center',
     },
 
     createProductText: {
@@ -90,8 +103,8 @@ export default StyleSheet.create({
 
     imglist:{
         top: 35,
-        left: 10,
-        color: '#AAA0A0',
+        right: 45,
+        color: '#fff',
         fontWeight: 'bold',
     },
 

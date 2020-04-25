@@ -13,12 +13,26 @@ import { TextInputMask } from 'react-native-masked-text'
 import { ThemeColors } from 'react-navigation';
 import Moment from 'moment';
 import 'moment/locale/pt-br';
+import DatePicker from 'react-native-datepicker';
 
 
 
 
 export default class EditProduct extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            count: 0,
+            dateDue: Moment(this.props.route.params.item.DateDue).utc().format('DD/MM/YYYY'),
+            alertDue: Moment(this.props.route.params.item.AlertDateDue).utc().format('DD/MM/YYYY'),
+        };
+
+        //Settin up an interval for the counter
+        this.t = setInterval(() => {
+            this.setState({ count: this.state.count + 1 });
+        }, 1000);
+    }
 
     static navigationOptions = {
         header: null,
@@ -35,8 +49,8 @@ export default class EditProduct extends React.Component {
     state = {
         name: '',
         quantity: '',
-        dateDue: '',
-        alertDue: '',
+        //dateDue: '',
+        //alertDue: '',
         userId: '',
     };
 
@@ -72,23 +86,21 @@ export default class EditProduct extends React.Component {
 
     //Verificando Dados do INPUT
     handleEditPress = async () => {
-        console.log('entrou')
-        //const Id = await AsyncStorage.getItem("mykey");
 
-        if (this.state.name.length === 0) {
-            this.state.name = this.props.route.params.item.Name;           
+        if (this.state.name == null) {
+            this.state.name = this.props.route.params.item.Name;
         }
 
-        if (this.state.quantity.length === 0) {
-            this.state.quantity = this.props.route.params.item.Quantity;           
+        if (this.state.quantity == null) {
+            this.state.quantity = this.props.route.params.item.Quantity;
         }
 
-        if (this.state.dateDue.length === 0) {
-            this.state.dateDue = this.props.route.params.item.DateDue;            
+        if (this.state.dateDue == null) {
+            this.state.dateDue = this.props.route.params.item.DateDue;
         }
 
-        if (this.state.alertDue.length === 0) {
-            this.state.alertDue = this.props.route.params.item.alertDue;            
+        if (this.state.alertDue == null) {
+            this.state.alertDue = this.props.route.params.item.AlertDateDue;
         }
 
         this.EditApply();
@@ -118,7 +130,6 @@ export default class EditProduct extends React.Component {
             var dataVencimento = Moment(this.state.dateDue, "DD/MM/YYYY");
             var dataAlertaVencimento = Moment(this.state.alertDue, "DD/MM/YYYY");
 
-            console.log(dataVencimento, dataAlertaVencimento);
             const response = await api.put(`/product/${this.props.route.params.item.Id}`, {
                 Name: this.state.name,
                 DateDue: dataVencimento,
@@ -126,7 +137,7 @@ export default class EditProduct extends React.Component {
                 UserId: this.state.userId,
                 Quantity: this.state.quantity,
             });
-            console.log(response);
+
             this.setState({ success: 'produto editado com sucesso! Redirecionando para a lista de produtos', error: '' });
 
             Alert.alert(
@@ -208,19 +219,23 @@ export default class EditProduct extends React.Component {
 
         const name = this.props.route.params.item.Name;
         const quantity = this.props.route.params.item.Quantity;
-        const dateDue = Moment(this.props.route.params.item.DateDue).utc().format('DD/MM/YYYY');
-        const alertDateDue = Moment(this.props.route.params.item.alertDue).utc().format('DD/MM/YYYY');
 
         return (
 
-            <KeyboardAwareScrollView  idingView style={style.container} behavior="padding"  resetScrollToCoords={{ x: 0, y: 0 }} contentContainerStyle={style.container}
-            scrollEnabled={false}>
+            <KeyboardAwareScrollView idingView style={style.container} behavior="padding" resetScrollToCoords={{ x: 0, y: 0 }} contentContainerStyle={style.container}
+                scrollEnabled={false}>
+
                 <View style={style.title}>
-                    <Text style={style.title}>MDC Software :: Contagem APP</Text>
-                    <Text style={style.subTitle}>- Editar Produto -</Text>
+                    <Text style={style.title}>{'EDITAR PRODUTOS            '}</Text>
+                    <Text style={style.subTitle}></Text>
+                    <Text style={style.subTitle}></Text>
+                </View>
+
+                <View style={style.logo}>
+                    <Image source={require('../../assets/logoLogin.png')} style={style.logo} />
                 </View>
                 
-                
+                <View style={style.inputView}>
                     <Text style={style.label}>Nome do Produto:</Text>
                     <TextInput
                         style={style.Input}
@@ -238,31 +253,62 @@ export default class EditProduct extends React.Component {
                         returnKeyType={"go"}
                         keyboardType={'numbers-and-punctuation'}
                         clearButtonMode="always"
+                        //value={this.state.quantity}
                         value={this.state.quantity}
                         onChangeText={this.handleQuantityChange}
                     />
 
                     <Text style={style.label}>Validade:</Text>
-                    <TextInput
-                        style={style.Input}
-                        placeholder={dateDue.toString()}
-                        returnKeyType={"go"}
-                        keyboardType={'numbers-and-punctuation'}
-                        clearButtonMode="always"
-                        value={this.dateDue}
-                        onChangeText={this.handleDateDueChange}
+                    <DatePicker
+                        style={{ width: 300, marginTop: 20 }}
+                        date={this.state.dateDue} //initial date from state
+                        mode="date" //The enum of date, datetime and time
+                        placeholder={'Selecione a data'}
+                        format="DD-MM-YYYY"
+                        minDate="01-01-2019"
+                        maxDate="01-01-2999"
+                        confirmBtnText="Confirmar"
+                        cancelBtnText="Cancelar"
+                        customStyles={{
+                            dateIcon: {
+                                position: 'absolute',
+                                left: 25,
+                                top: 4,
+                                marginLeft: 0
+                            },
+                            dateInput: {
+                                marginLeft: 70
+                            }
+                        }}
+                        onDateChange={this.handleDateDueChange}
                     />
 
+
                     <Text style={style.label}>Notificar vencimento:</Text>
-                    <TextInput
-                        style={style.Input}
-                        placeholder={alertDateDue.toString()}
-                        returnKeyType={"go"}
-                        keyboardType={'numbers-and-punctuation'}
-                        clearButtonMode="always"
-                        value={this.alertDue}
-                        onChangeText={this.handleAlertDueChange}
+                    <DatePicker
+                        style={{ width: 300, marginTop: 20 }}
+                        date={this.state.alertDue} //initial date from state
+                        mode="date" //The enum of date, datetime and time
+                        placeholder={'Selecione uma data'}
+                        format="DD-MM-YYYY"
+                        minDate="01-01-2019"
+                        maxDate="01-01-2999"
+                        confirmBtnText="Confirmar"
+                        cancelBtnText="Cancelar"
+                        customStyles={{
+                            dateIcon: {
+                                position: 'absolute',
+                                left: 25,
+                                top: 4,
+                                marginLeft: 0
+                            },
+                            dateInput: {
+                                marginLeft: 70
+                            }
+                        }}
+                        onDateChange={this.handleAlertDueChange}
                     />
+
 
 
 
@@ -275,7 +321,7 @@ export default class EditProduct extends React.Component {
                     <TouchableOpacity onPress={this.handleRemovePress}>
                         <Feather style={style.imgtrash} name="trash-2" size={25} color="#ff4040" />
                     </TouchableOpacity>
-                
+                </View>
 
 
                 <View style={style.addProduct}>
@@ -289,7 +335,7 @@ export default class EditProduct extends React.Component {
                         <Text style={style.createProductText}>{'ADICIONAR \nPRODUTO'}</Text>
                     </TouchableOpacity>
                 </View>
-                
+
 
             </KeyboardAwareScrollView>
 

@@ -1,6 +1,6 @@
 //This is an example code to Add Search Bar Filter on Listview//
 import React, { Component } from 'react';
-import { StyleSheet, View, ActivityIndicator, FlatList, Text, TouchableOpacity, AsyncStorage, ScrollView, RefreshControl, SafeAreaView } from 'react-native';
+import { StyleSheet, View, ActivityIndicator, FlatList, Text, TouchableOpacity, AsyncStorage, ScrollView, RefreshControl, SafeAreaView, Image } from 'react-native';
 import { Feather } from '@expo/vector-icons'
 import { TextInput } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
@@ -81,8 +81,7 @@ export default class App extends Component {
 
     EditPress = (item) => {
         this.props.navigation.push('EditProduct', { item });
-        console.log(item.Name, item.Id, item.DateDue, item.Quantity)
-
+        console.log(item.Name, item.Id, item.Quantity, item.DateDue, item.AlertDateDue)
     }
 
     handleOnNavigateBack(commentText) {
@@ -104,123 +103,129 @@ export default class App extends Component {
             <View style={style.container} >
 
                 <View style={style.title}>
-                    <Text style={style.title}>MDC Software :: Contagem APP</Text>
-                    <Text style={style.subTitle}>- Lista de  Produtos -</Text>
+                    <Text style={style.title}>{'LISTA DE PRODUTOS        '}</Text>
+                    <Text style={style.subTitle}></Text>
+                    <Text style={style.subTitle}></Text>
                 </View>
 
-                <TextInput
-                    style={style.Input}
-                    onChangeText={text => this.SearchFilterFunction(text)}
-                    value={this.state.text}
-                    underlineColorAndroid="transparent"
-                    placeholder="Buscar produto..."
-                />
+                <View style={style.logo}>
+                    <Image source={require('../../assets/logoLogin.png')} style={style.logo} />
+                </View>
 
-                <Text style={style.alertVencido}>{'** Vermelho: itens vencidos    '}
-                    <Text style={style.alertaVencer}>{'    ** Amarelo: itens à vencer'}
-                    </Text>
-                </Text>
+                
+                    <TextInput
+                        style={style.Input}
+                        onChangeText={text => this.SearchFilterFunction(text)}
+                        value={this.state.text}
+                        underlineColorAndroid="transparent"
+                        placeholder="Buscar produto..."
+                    />
 
-                <FlatList
-                    style={style.list}
-                    //onRefresh={() => this.onRefresh()}
-                    data={this.state.dataSource}
-                    ItemSeparatorComponent={this.FlatListItemSeparator}
-                    renderItem={({ item }) => {
+                    <View style={style.legend}>
+                        <Text style={style.alertVencido}>{'** Vermelho: Vencidos '}</Text>
+                        <Text style={style.alertaVencer}>{'** Amarelo: À vencer'}</Text>
+                    </View>
 
-                        var DataAtual = parseInt(Moment().utc().format('YYYYMMDD'));
-                        var DataVencido = parseInt(Moment(item.DateDue).utc().format('YYYYMMDD'));
-                        var AlertarVencimento = parseInt(Moment(item.AlertDateDue).utc().format('YYYYMMDD'));
+                    <FlatList
+                        style={style.list}
+                        //onRefresh={() => this.onRefresh()}
+                        data={this.state.dataSource}
+                        ItemSeparatorComponent={this.FlatListItemSeparator}
+                        renderItem={({ item }) => {
 
-                        console.log(DataAtual, DataVencido);
+                            var DataAtual = parseInt(Moment().utc().format('YYYYMMDD'));
+                            var DataVencido = parseInt(Moment(item.DateDue).utc().format('YYYYMMDD'));
+                            var AlertarVencimento = parseInt(Moment(item.AlertDateDue).utc().format('YYYYMMDD'));
 
-                        if (DataVencido > DataAtual && AlertarVencimento > DataAtual) {
-                            console.log('produto normal');
-                            return <TouchableOpacity onPress={() => this.EditPress(item)}>
-                                <View>
-                                    <Text style={style.incidentProperty}>Item:</Text>
-                                    <Text style={style.incidentValue}>{item.Name}</Text>
+                            //console.log(DataAtual, DataVencido);
 
-                                    <Text style={style.incidentValue}>{item.Quantity} Unidades</Text>
+                            if (DataVencido > DataAtual && AlertarVencimento > DataAtual) {
+                                //console.log('produto normal');
+                                return <TouchableOpacity onPress={() => this.EditPress(item)}>
+                                    <View>
+                                        <Text style={style.incidentProperty}>Item:</Text>
+                                        <Text style={style.incidentValue}>{item.Name}</Text>
 
-                                    <Text style={style.detailsButton}>Data Vencimento:</Text>
-                                    <Text style={style.detailsValue}>{Moment(item.DateDue).utc().format('DD/MM/YYYY')}</Text>
+                                        <Text style={style.incidentValue}>{item.Quantity} Unidades</Text>
 
-                                    <Feather style={style.imgedit} name="edit" size={20} color="#000000" />
+                                        <Text style={style.detailsButton}>Data Vencimento:</Text>
+                                        <Text style={style.detailsValue}>{Moment(item.DateDue).utc().format('DD/MM/YYYY')}</Text>
 
-                                </View>
-                            </TouchableOpacity>
-                        }
+                                        <Feather style={style.imgedit} name="edit" size={20} color="#000000" />
 
-                        if (DataAtual > DataVencido) {
-                            console.log('Produto vencido');
-                            return <TouchableOpacity onPress={() => this.EditPress(item)}>
-                                <View>
-                                    <Text style={style.incidentProperty}>Item:</Text>
-                                    <Text style={style.incidentValueDue}>{item.Name}</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            }
 
-                                    <Text style={style.incidentValueDue}>{item.Quantity} Unidades</Text>
+                            if (DataAtual > DataVencido) {
+                                //console.log('Produto vencido');
+                                return <TouchableOpacity onPress={() => this.EditPress(item)}>
+                                    <View>
+                                        <Text style={style.incidentProperty}>Item:</Text>
+                                        <Text style={style.incidentValueDue}>{item.Name}</Text>
 
-                                    <Text style={style.detailsButton}>Data Vencimento:</Text>
-                                    <Text style={style.detailsValueDue}>{Moment(item.DateDue).utc().format('DD/MM/YYYY')}</Text>
-                                    
-                                    <Feather style={style.imgedit} name="edit" size={20} color="#000000" />
+                                        <Text style={style.incidentValueDue}>{item.Quantity} Unidades</Text>
 
-                                </View>
-                            </TouchableOpacity>
-                        }
+                                        <Text style={style.detailsButton}>Data Vencimento:</Text>
+                                        <Text style={style.detailsValueDue}>{Moment(item.DateDue).utc().format('DD/MM/YYYY')}</Text>
 
-                        if (AlertarVencimento < DataAtual) {
-                            console.log('Alertar vencimento');
-                            return <TouchableOpacity onPress={() => this.EditPress(item)}>
-                                <View>
-                                    <Text style={style.incidentProperty}>Item:</Text>
-                                    <Text style={style.incidentValueAlert}>{item.Name}</Text>
+                                        <Feather style={style.imgedit} name="edit" size={20} color="#000000" />
 
-                                    <Text style={style.incidentValueAlert}>{item.Quantity} Unidades</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            }
 
-                                    <Text style={style.detailsButton}>Data Vencimento:</Text>
-                                    <Text style={style.detailsValueAlert}>{Moment(item.DateDue).utc().format('DD/MM/YYYY')}</Text>
+                            if (AlertarVencimento < DataAtual) {
+                                //console.log('Alertar vencimento');
+                                return <TouchableOpacity onPress={() => this.EditPress(item)}>
+                                    <View>
+                                        <Text style={style.incidentProperty}>Item:</Text>
+                                        <Text style={style.incidentValueAlert}>{item.Name}</Text>
 
-                                    <Feather style={style.imgedit} name="edit" size={20} color="#000000" />
+                                        <Text style={style.incidentValueAlert}>{item.Quantity} Unidades</Text>
 
-                                </View>
-                            </TouchableOpacity>
-                        }
+                                        <Text style={style.detailsButton}>Data Vencimento:</Text>
+                                        <Text style={style.detailsValueAlert}>{Moment(item.DateDue).utc().format('DD/MM/YYYY')}</Text>
 
-                        else{
-                            console.log('caiu em erro e listou aqui');
+                                        <Feather style={style.imgedit} name="edit" size={20} color="#000000" />
 
-                            return <TouchableOpacity onPress={() => this.EditPress(item)}>
-                            <View>
-                                <Text style={style.incidentProperty}>Item:</Text>
-                                <Text style={style.incidentValue}>{item.Name}</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            }
 
-                                <Text style={style.incidentValue}>{item.Quantity} Unidades</Text>
+                            else {
+                                //console.log('caiu em erro e listou aqui');
 
-                                <Text style={style.detailsButton}>Data Vencimento:</Text>
-                                <Text style={style.detailsValue}>{Moment(item.DateDue).utc().format('DD/MM/YYYY')}</Text>
+                                return <TouchableOpacity onPress={() => this.EditPress(item)}>
+                                    <View>
+                                        <Text style={style.incidentProperty}>Item:</Text>
+                                        <Text style={style.incidentValue}>{item.Name}</Text>
 
-                                <Feather style={style.imgedit} name="edit" size={20} color="#000000" />
+                                        <Text style={style.incidentValue}>{item.Quantity} Unidades</Text>
 
-                            </View>
-                        </TouchableOpacity>
-                        }
+                                        <Text style={style.detailsButton}>Data Vencimento:</Text>
+                                        <Text style={style.detailsValue}>{Moment(item.DateDue).utc().format('DD/MM/YYYY')}</Text>
 
-                    }}
-                    enableEmptySections={true}
-                    keyExtractor={(item, index) => index}
-                />
+                                        <Feather style={style.imgedit} name="edit" size={20} color="#000000" />
+
+                                    </View>
+                                </TouchableOpacity>
+                            }
+
+                        }}
+                        enableEmptySections={true}
+                        keyExtractor={(item, index) => index}
+                    />
+               
 
                 <View style={style.addProduct}>
-
-                    <TouchableOpacity onPress={() => { }}>
+                    {/*  <TouchableOpacity onPress={() => { }}>
                         <Feather style={style.imglist} name="list" size={28} color="#E82041" />
                         <Text style={style.listProductText}>{'LISTAR \nPRODUTO'}</Text>
                     </TouchableOpacity>
-
+ */}
                     <TouchableOpacity onPress={this.CreatePress.bind(this)}>
-                        <Feather style={style.imgadd} name="plus-circle" size={28} color="#E82041" />
+                        <Feather style={style.imgadd} name="plus-circle" size={28} color="#fff" />
                         <Text style={style.createProductText}>{'ADICIONAR \nPRODUTO'}</Text>
                     </TouchableOpacity>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Platform, View, Text, Image, ImageBackground, KeyboardAvoidingView, TouchableOpacity, StyleSheet, Alert, StatusBar, AsyncStorage } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import PropTypes from 'prop-types';
 import { TextInput, Button } from 'react-native-paper';
 import { useNavigation, StackNavigator } from '@react-navigation/native';

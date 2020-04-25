@@ -27,7 +27,7 @@ export default class Recover extends React.Component {
 
     state = {
         email: '',
-        
+
     };
 
     goBack() {
@@ -41,7 +41,7 @@ export default class Recover extends React.Component {
 
 
     handleRecoverPress = async () => {
-        
+
         if (this.state.email.length === 0) {
             this.setState({ error: 'Preencha com seu e-mail!' }, () => false);
 
@@ -111,8 +111,13 @@ export default class Recover extends React.Component {
             <KeyboardAvoidingView style={style.container} enabled={Platform.OS == 'ios'} behavior={Platform.select({ ios: 'padding', android: null, })}>
 
                 <View style={style.title}>
-                    <Text style={style.title}>MDC Software :: Contagem APP</Text>
-                    <Text style={style.subTitle}>- Esqueceu a senha ? -</Text>
+                    <Text style={style.title}>{'ESQUECEU A SENHA?            '}</Text>
+                    <Text style={style.subTitle}></Text>
+                    <Text style={style.subTitle}></Text>
+                </View>
+
+                <View style={style.logo}>
+                    <Image source={require('../../assets/logoLogin.png')} style={style.logo} />
                 </View>
 
                 <View style={style.formTextTitle}>

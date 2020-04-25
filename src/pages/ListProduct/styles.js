@@ -4,30 +4,39 @@ import Constants from 'expo-constants';
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff",
+        backgroundColor: "#f3f3f3",
     },
 
     loader: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#fff"
+        backgroundColor: "#f3f3f3"
     },
-
 
     title: {
-        paddingTop: Constants.statusBarHeight + 0,
+        paddingTop: Constants.statusBarHeight + 5,
+        justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#153951',
+        backgroundColor: '#01273e',
         color: '#fff',
-        fontSize: 20
+        fontSize: 19.8,
+        fontWeight: 'bold',
     },
+
+    logo: {
+        top: -42,
+        left: 145,
+        width: 75,
+        height: 75,
+      },
 
     list: {
         top: 5,
         paddingVertical: 4,
         margin: 5,
-        backgroundColor: "#f3f3f3",
+        //backgroundColor: "#f3f3f3",
+        backgroundColor: "#e6e6e6",
         marginBottom: 80
     },
 
@@ -43,21 +52,26 @@ export default StyleSheet.create({
         left: 30,
         width: 300,
         height: 35,
-        marginTop: 8,
+        marginTop: -65,
         backgroundColor: '#ebebe0',
         fontSize: 15,
         fontWeight: 'bold',
     },
 
-    alertVencido:{
+    legend:{
         marginTop: 10,
-        fontSize: 15,
-        marginLeft: 12,
+        marginHorizontal: 50,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+
+    alertVencido:{
+        fontSize: 15,       
         color: 'red',
     },
 
     alertaVencer:{
-        color:'#999900',
+        color:'#ffa300',
     },
 
     incident: {
@@ -91,7 +105,8 @@ export default StyleSheet.create({
         marginTop: 8,
         fontSize: 15,
         //color: '#737380',
-        color: '#999900'
+        //color: '#999900',
+        color: '#ffa300'
     },
 
     incidentValue: {
@@ -132,7 +147,7 @@ export default StyleSheet.create({
     detailsValueAlert:{
         marginTop: 8,
         fontSize: 15,
-        color: '#999900',
+        color: '#ffa300',
         paddingHorizontal: 255,
         top: -60,
     },
@@ -150,9 +165,10 @@ export default StyleSheet.create({
         right: 0,
         left: 0,
         bottom: 0,
-        backgroundColor: '#153951',
+        backgroundColor: '#01273e',
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
+        fontFamily: 'Raleway'
     },
 
     listProductText: {
@@ -165,12 +181,14 @@ export default StyleSheet.create({
     },
 
     createProductText: {
-        right: 10,
+        //right: 10,
         marginBottom: 10,
-        color: '#AAA0A0',
-        fontSize: 20,
+        //color: '#AAA0A0',
+        color: '#fff',
+        fontSize: 19.8,
         fontWeight: 'bold',
         textAlign: 'center',
+        justifyContent: 'center',
     },
 
     imglist:{
@@ -182,8 +200,9 @@ export default StyleSheet.create({
 
     imgadd:{
         top: 35,
-        right: 45,
-        color: '#AAA0A0',
+        right: 35,
+        //color: '#AAA0A0',
+        color: '#fff',
         fontWeight: 'bold',
     }
 

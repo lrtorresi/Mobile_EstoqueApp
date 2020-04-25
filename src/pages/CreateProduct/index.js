@@ -1,7 +1,7 @@
 import React from 'react';
 import { Feather } from '@expo/vector-icons'
-import { View, FlatList, Image, Text, TouchableOpacity, TouchableHighlight, Alert, AsyncStorage, KeyboardAvoidingView,  } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { View, FlatList, Image, Text, TouchableOpacity, TouchableHighlight, Alert, AsyncStorage, KeyboardAvoidingView } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import PropTypes from 'prop-types';
 import { TextInput, Button } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
@@ -9,18 +9,16 @@ import style from './styles'
 import { render } from 'react-dom';
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
-import { TextInputMask } from 'react-native-masked-text';
 import Moment from 'moment';
 import 'moment/locale/pt-br';
-
-
+import DatePicker from 'react-native-datepicker';
 
 
 export default class ListProduct extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { count: 0 };
+        this.state = { count: 0, dateDue: Moment().utc().format('DD/MM/YYYY') };
         //Settin up an interval for the counter
         this.t = setInterval(() => {
             this.setState({ count: this.state.count + 1 });
@@ -165,77 +163,102 @@ export default class ListProduct extends React.Component {
 
     render() {
         return (
-            <KeyboardAwareScrollView  idingView style={style.container} behavior="padding"  resetScrollToCoords={{ x: 0, y: 0 }} contentContainerStyle={style.container}
-            scrollEnabled={false}>
+            <KeyboardAwareScrollView idingView style={style.container} behavior="padding" resetScrollToCoords={{ x: 0, y: 0 }} contentContainerStyle={style.container}
+                scrollEnabled={false}>
+
                 <View style={style.title}>
-                    <Text style={style.title}>MDC Software :: Contagem APP</Text>
-                    <Text style={style.subTitle}>- Criar Produto -</Text>
+                    <Text style={style.title}>{'ADICIONAR PRODUTO           '}</Text>
+                    <Text style={style.subTitle}></Text>
+                    <Text style={style.subTitle}></Text>
                 </View>
 
-                <Text style={style.label}>Nome do Produto:</Text>
-                <TextInput
-                    style={style.Input}
-                    placeholder="Descrição do produto"
-                    returnKeyType={"go"}
-                    clearButtonMode="always"
-                    value={this.state.name}
-                    onChangeText={this.handleNameChange}
-                />
+                <View style={style.logo}>
+                    <Image source={require('../../assets/logoLogin.png')} style={style.logo} />
+                </View>
 
-                <Text style={style.label}>Quantidade:</Text>
-                <TextInput
-                    style={style.Input}
-                    placeholder="Qtd de itens em estoque (Ex.: 20)"
-                    returnKeyType={"go"}
-                    autoCorrect={false}
-                    keyboardType={'numbers-and-punctuation'}
-                    clearButtonMode="always"
-                    value={this.state.quantity}
-                    onChangeText={this.handleQuantityChange}
-                />
+                
+                <View style={style.inputView}>
+                    <Text style={style.label}>Nome do Produto:</Text>
+                    <TextInput
+                        style={style.Input}
+                        placeholder="Descrição do produto"
+                        returnKeyType={"go"}
+                        clearButtonMode="always"
+                        value={this.state.name}
+                        onChangeText={this.handleNameChange}
+                    />
 
-                <Text style={style.label}>Validade:</Text>
-                <TextInput
-                    style={style.Input}
-                    placeholder="Data de validade (Ex.: 01/01/2050)"
-                    returnKeyType={"go"}
-                    keyboardType={'numbers-and-punctuation'}
-                    autoCorrect={false}
-                    clearButtonMode="always"
-                    value={this.dateDue}
-                    onChangeText={this.handleDateDueChange}
-                />
+                    <Text style={style.label}>Quantidade:</Text>
+                    <TextInput
+                        style={style.Input}
+                        placeholder="Qtd de itens em estoque (Ex.: 20)"
+                        returnKeyType={"go"}
+                        autoCorrect={false}
+                        keyboardType={'numbers-and-punctuation'}
+                        clearButtonMode="always"
+                        value={this.state.quantity}
+                        onChangeText={this.handleQuantityChange}
+                    />
 
-                <Text style={style.label}>Notificar vencimento:</Text>
-                <TextInput
-                    style={style.Input}
-                    placeholder="Dias de antecedência (Ex.: 7)"
-                    returnKeyType={"go"}
-                    keyboardType={'numeric'}
-                    autoCorrect={false}
-                    clearButtonMode="always"
-                    value={this.alertDue}
-                    onChangeText={this.handleAlertDueChange}
-                />
+                    <Text style={style.label}>Validade:</Text>
+                    <DatePicker
+                        style={{ width: 300, marginTop: 10 }}
+                        date={this.state.dateDue} //initial date from state
+                        mode="date" //The enum of date, datetime and time
+                        placeholder="Selecione a data de validade"
+                        format="DD-MM-YYYY"
+                        minDate="01-01-2019"
+                        maxDate="01-01-2999"
+                        confirmBtnText="Confirmar"
+                        cancelBtnText="Cancelar"
+                        customStyles={{
+                            dateIcon: {
+                                position: 'absolute',
+                                left: 25,
+                                top: 4,
+                                marginLeft: 0
+                            },
+                            dateInput: {
+                                marginLeft: 70
+                            }
+                        }}
+                        onDateChange={this.handleDateDueChange}
+                    />
 
-                <TouchableOpacity style={style.button} onPress={this.handleCadastrarPress}>
-                    <Text style={style.buttonText}> CADASTRAR</Text>
-                </TouchableOpacity>
+
+
+                    <Text style={style.label}>Notificar vencimento:</Text>
+                    <TextInput
+                        style={style.Input}
+                        placeholder="Dias de antecedência (Ex.: 7)"
+                        returnKeyType={"go"}
+                        keyboardType={'numeric'}
+                        autoCorrect={false}
+                        clearButtonMode="always"
+                        value={this.alertDue}
+                        onChangeText={this.handleAlertDueChange}
+                    />
 
 
 
-
-                <View style={style.addProduct}>
-                    <TouchableOpacity onPress={this.ListPress.bind(this)}>
-                        <Feather style={style.imglist} name="list" size={28} color="#E82041" />
-                        <Text style={style.listProductText}>{'LISTAR \nPRODUTO'}</Text>
+                    <TouchableOpacity style={style.button} onPress={this.handleCadastrarPress}>
+                        <Text style={style.buttonText}> CADASTRAR</Text>
                     </TouchableOpacity>
+                    </View>
 
-                    <TouchableOpacity onPress={() => { }}>
+
+
+                    <View style={style.addProduct}>
+                        <TouchableOpacity onPress={this.ListPress.bind(this)}>
+                            <Feather style={style.imglist} name="list" size={28} color="#E82041" />
+                            <Text style={style.listProductText}>{'LISTAR \nPRODUTO'}</Text>
+                        </TouchableOpacity>
+
+                        {/*  <TouchableOpacity onPress={() => { }}>
                         <Feather style={style.imgadd} name="plus-circle" size={28} color="#E82041" />
                         <Text style={style.createProductText}>{'ADICIONAR \nPRODUTO'}</Text>
-                    </TouchableOpacity>
-                </View>
+                    </TouchableOpacity> */}
+                    </View>
 
             </KeyboardAwareScrollView >
 

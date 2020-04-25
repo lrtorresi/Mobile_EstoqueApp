@@ -1,7 +1,7 @@
 import React from 'react';
 import { Platform, View, Text, Image, ImageBackground, KeyboardAvoidingView, TouchableOpacity, Alert, StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
-
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { TextInput, Button } from 'react-native-paper';
 import { useNavigation, StackActions, NavigationActions } from '@react-navigation/native';
 import style from './styles';
@@ -54,7 +54,7 @@ export default class NewUser extends React.Component {
 
     LoginButtonPress() {
         this.props.navigation.navigate('Login'); // navigate to Login screen!
-      }
+    }
 
     handleSignUpPress = async () => {
         if (this.state.email.length === 0 || this.state.password.length === 0 || this.state.name.length === 0 || this.state.cnpj.length === 0) {
@@ -144,8 +144,13 @@ export default class NewUser extends React.Component {
             <KeyboardAvoidingView style={style.container} enabled={Platform.OS == 'ios'} behavior={Platform.select({ ios: 'padding', android: null, })}>
 
                 <View style={style.title}>
-                    <Text style={style.title}>MDC Software :: Contagem APP</Text>
-                    <Text style={style.subTitle}>- Cadastro de usuário -</Text>
+                    <Text style={style.title}>{'CADASTRO DE USUÁRIO        '}</Text>
+                    <Text style={style.subTitle}></Text>
+                    <Text style={style.subTitle}></Text>
+                </View>
+
+                <View style={style.logo}>
+                    <Image source={require('../../assets/logoLogin.png')} style={style.logo} />
                 </View>
 
                 <View style={style.formTextTitle}>
@@ -159,6 +164,7 @@ export default class NewUser extends React.Component {
                         autoCorrect={false}
                         placeholder="E-mail:"
                         returnKeyType={"go"}
+                        clearButtonMode="always"
                         value={this.state.email}
                         onChangeText={this.handleEmailChange}
                     />
@@ -169,19 +175,24 @@ export default class NewUser extends React.Component {
                         autoCapitalize="none"
                         autoCorrect={false}
                         returnKeyType={"go"}
+                        clearButtonMode="always"
                         value={this.state.password}
                         onChangeText={this.handlePasswordChange}
                     />
 
                     <TextInput style={style.form}
-                        placeholder="Nome:"
+                        placeholder="Nome / Razão Social:"
+                        clearButtonMode="always"
                         returnKeyType={"go"}
                         value={this.state.name}
                         onChangeText={this.handleNameChange}
                     />
 
                     <TextInput style={style.form}
-                        keyboardType='numeric'
+                        //keyboardType='numeric'
+                        keyboardType={'numbers-and-punctuation'}
+                        autoCorrect={false}
+                        clearButtonMode="always"
                         placeholder="CNPJ / CPF:"
                         returnKeyType={"go"}
                         value={this.state.cnpj}
