@@ -108,7 +108,7 @@ export default class EditProduct extends React.Component {
 
     handleRemovePress = async () => {
         Alert.alert(
-            'MDC Software',
+            '',
             `Deseja excluir o produto \n ${this.props.route.params.item.Name} ?`,
             [
                 {
@@ -141,7 +141,7 @@ export default class EditProduct extends React.Component {
             this.setState({ success: 'produto editado com sucesso! Redirecionando para a lista de produtos', error: '' });
 
             Alert.alert(
-                'MDC Software',
+                '',
                 'Produto editado com sucesso!',
                 [
                     { text: 'OK', onPress: () => { setTimeout(this.goToList, 200); } },
@@ -155,7 +155,7 @@ export default class EditProduct extends React.Component {
             this.setState({ error: 'Houve um problema na edição do produto, verifique os dados preenchidos!' });
 
             Alert.alert(
-                'MDC Software',
+                '',
                 'Houve um problema na edição do produto, verifique os dados preenchidos!',
                 [
                     {
@@ -178,7 +178,7 @@ export default class EditProduct extends React.Component {
             this.setState({ success: 'produto excluído com sucesso! Redirecionando para a lista de produtos', error: '' });
 
             Alert.alert(
-                'MDC Software',
+                '',
                 'Produto excluído com sucesso!',
                 [
                     { text: 'OK', onPress: () => { setTimeout(this.goToList, 200); } },
@@ -191,7 +191,7 @@ export default class EditProduct extends React.Component {
             this.setState({ error: 'Houve um problema na exclusão do produto, verifique os dados preenchidos!' });
 
             Alert.alert(
-                'MDC Software',
+                '',
                 'Houve um problema na exclusão do produto, verifique os dados preenchidos!',
                 [
                     {
@@ -226,14 +226,15 @@ export default class EditProduct extends React.Component {
                 scrollEnabled={false}>
 
                 <View style={style.title}>
-                    <Text style={style.title}>{'EDITAR PRODUTOS            '}</Text>
+                    {/* <Text style={style.title}>{'EDITAR PRODUTOS            '}</Text>
                     <Text style={style.subTitle}></Text>
-                    <Text style={style.subTitle}></Text>
+                    <Text style={style.subTitle}></Text> */}
+                    <Image source={require('../../assets/editar_header.png')} style={style.imgheader}/>
                 </View>
 
-                <View style={style.logo}>
+               {/*  <View style={style.logo}>
                     <Image source={require('../../assets/logoLogin.png')} style={style.logo} />
-                </View>
+                </View> */}
                 
                 <View style={style.inputView}>
                     <Text style={style.label}>Nome do Produto:</Text>
@@ -327,12 +328,12 @@ export default class EditProduct extends React.Component {
                 <View style={style.addProduct}>
                     <TouchableOpacity onPress={this.ListPress.bind(this)}>
                         <Feather style={style.imglist} name="list" size={28} color="#E82041" />
-                        <Text style={style.listProductText}>{'LISTAR \nPRODUTO'}</Text>
+                        <Text style={style.listProductText}>{'LISTAR \nPRODUTOS'}</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={this.CreatePress.bind(this)}>
                         <Feather style={style.imgadd} name="plus-circle" size={28} color="#E82041" />
-                        <Text style={style.createProductText}>{'ADICIONAR \nPRODUTO'}</Text>
+                        <Text style={style.createProductText}>{'ADICIONAR \nPRODUTOS'}</Text>
                     </TouchableOpacity>
                 </View>
 

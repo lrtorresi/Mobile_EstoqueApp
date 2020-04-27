@@ -66,7 +66,7 @@ export default class App extends React.Component {
       this.setState({ error: 'Preencha todos os campos para continuar!' }, () => false);
 
       Alert.alert(
-        'MDC Software',
+        '',
         'Preencha todos os campos para continuar!',
         [
           {
@@ -99,7 +99,7 @@ export default class App extends React.Component {
         this.setState({ error: 'Houve um problema com o login, verifique os dados preenchidos!' });
 
         Alert.alert(
-          'MDC Software',
+          '',
           'Houve um problema com o login, verifique os dados preenchidos!',
           [
             {
@@ -129,7 +129,7 @@ export default class App extends React.Component {
     return (
 
       <KeyboardAvoidingView style={style.container} enabled={Platform.OS == 'ios'} behavior={Platform.select({ ios: 'padding', android: null, })}>
-        <ImageBackground source={require('../../assets/background.png')} style={style.container}>
+        <ImageBackground source={require('../../assets/fd_blue.png')} style={style.container}>
           <Image source={require('../../assets/logoLogin.png')} style={style.logo} />
 
 

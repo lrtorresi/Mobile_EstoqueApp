@@ -103,14 +103,15 @@ export default class App extends Component {
             <View style={style.container} >
 
                 <View style={style.title}>
-                    <Text style={style.title}>{'LISTA DE PRODUTOS        '}</Text>
+                   {/*  <Text style={style.title}>{'LISTA DE PRODUTOS        '}</Text>
                     <Text style={style.subTitle}></Text>
-                    <Text style={style.subTitle}></Text>
+                    <Text style={style.subTitle}></Text> */}
+                    <Image source={require('../../assets/lista_header.png')} style={style.imgheader}/>
                 </View>
 
-                <View style={style.logo}>
+                {/* <View style={style.logo}>
                     <Image source={require('../../assets/logoLogin.png')} style={style.logo} />
-                </View>
+                </View> */}
 
                 
                     <TextInput
@@ -136,8 +137,6 @@ export default class App extends Component {
                             var DataAtual = parseInt(Moment().utc().format('YYYYMMDD'));
                             var DataVencido = parseInt(Moment(item.DateDue).utc().format('YYYYMMDD'));
                             var AlertarVencimento = parseInt(Moment(item.AlertDateDue).utc().format('YYYYMMDD'));
-
-                            //console.log(DataAtual, DataVencido);
 
                             if (DataVencido > DataAtual && AlertarVencimento > DataAtual) {
                                 //console.log('produto normal');
@@ -226,7 +225,7 @@ export default class App extends Component {
  */}
                     <TouchableOpacity onPress={this.CreatePress.bind(this)}>
                         <Feather style={style.imgadd} name="plus-circle" size={28} color="#fff" />
-                        <Text style={style.createProductText}>{'ADICIONAR \nPRODUTO'}</Text>
+                        <Text style={style.createProductText}>{'ADICIONAR \nPRODUTOS'}</Text>
                     </TouchableOpacity>
 
                 </View>

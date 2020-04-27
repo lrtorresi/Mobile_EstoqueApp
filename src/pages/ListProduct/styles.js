@@ -14,22 +14,37 @@ export default StyleSheet.create({
         backgroundColor: "#f3f3f3"
     },
 
+    /*  title: {
+         paddingTop: Constants.statusBarHeight + 5,
+         justifyContent: 'center',
+         alignItems: 'center',
+         backgroundColor: '#01273e',
+         color: '#fff',
+         fontSize: 19.8,
+         fontWeight: 'bold',
+     },
+  */
+
     title: {
-        paddingTop: Constants.statusBarHeight + 5,
+        paddingTop: Constants.statusBarHeight + 0,
+        backgroundColor: '#01273e',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#01273e',
-        color: '#fff',
-        fontSize: 19.8,
-        fontWeight: 'bold',
     },
+
+    imgheader: {
+        resizeMode: 'cover',
+        width: 385,
+        height: 100,
+    },
+
 
     logo: {
         top: -42,
         left: 145,
         width: 75,
         height: 75,
-      },
+    },
 
     list: {
         top: 5,
@@ -52,26 +67,26 @@ export default StyleSheet.create({
         left: 30,
         width: 300,
         height: 35,
-        marginTop: -65,
+        marginTop: 10,
         backgroundColor: '#ebebe0',
         fontSize: 15,
         fontWeight: 'bold',
     },
 
-    legend:{
+    legend: {
         marginTop: 10,
         marginHorizontal: 50,
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
 
-    alertVencido:{
-        fontSize: 15,       
+    alertVencido: {
+        fontSize: 15,
         color: 'red',
     },
 
-    alertaVencer:{
-        color:'#ffa300',
+    alertaVencer: {
+        color: '#ffa300',
     },
 
     incident: {
@@ -81,7 +96,7 @@ export default StyleSheet.create({
         marginBottom: 5,
         borderColor: '#000000',
         backgroundColor: '#e1e1d0',
-        
+
     },
 
     incidentProperty: {
@@ -117,12 +132,12 @@ export default StyleSheet.create({
         color: '#000000'
     },
 
-    imgedit:{
+    imgedit: {
         top: -50,
         left: 290,
     },
 
-    imgAlert:{
+    imgAlert: {
         top: -50,
         left: 150,
     },
@@ -135,7 +150,7 @@ export default StyleSheet.create({
         top: -60,
     },
 
-    detailsValueDue:{
+    detailsValueDue: {
         marginTop: 8,
         fontSize: 15,
         //color: '#737380',
@@ -144,7 +159,7 @@ export default StyleSheet.create({
         top: -60,
     },
 
-    detailsValueAlert:{
+    detailsValueAlert: {
         marginTop: 8,
         fontSize: 15,
         color: '#ffa300',
@@ -152,7 +167,7 @@ export default StyleSheet.create({
         top: -60,
     },
 
-    detailsValue:{
+    detailsValue: {
         marginTop: 8,
         fontSize: 15,
         color: '#000000',
@@ -191,14 +206,14 @@ export default StyleSheet.create({
         justifyContent: 'center',
     },
 
-    imglist:{
+    imglist: {
         top: 35,
         left: 10,
         color: '#AAA0A0',
         fontWeight: 'bold',
     },
 
-    imgadd:{
+    imgadd: {
         top: 35,
         right: 35,
         //color: '#AAA0A0',
@@ -206,5 +221,5 @@ export default StyleSheet.create({
         fontWeight: 'bold',
     }
 
-    
+
 });

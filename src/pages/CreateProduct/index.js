@@ -80,11 +80,11 @@ export default class ListProduct extends React.Component {
 
     handleCadastrarPress = async () => {
 
-        if (this.state.name.length === 0) {
+        if (this.state.name == null) {
             this.setState({ error: 'Preencha o Nome do Produto!' }, () => false);
 
             Alert.alert(
-                'MDC Software',
+                '',
                 'Preencha o Nome do Produto!',
                 [
                     {
@@ -119,7 +119,7 @@ export default class ListProduct extends React.Component {
                 this.setState({ success: 'produto criado com sucesso! Redirecionando para a lista de produtos', error: '' });
 
                 Alert.alert(
-                    'MDC Software',
+                    '',
                     'Produto cadastrado com sucesso!',
                     [
 
@@ -134,7 +134,7 @@ export default class ListProduct extends React.Component {
                 this.setState({ error: 'Houve um problema no cadastro do produto, verifique os dados preenchidos!' });
 
                 Alert.alert(
-                    'MDC Software',
+                    '',
                     'Houve um problema no cadastro do produto, verifique os dados preenchidos!',
                     [
                         {
@@ -167,14 +167,15 @@ export default class ListProduct extends React.Component {
                 scrollEnabled={false}>
 
                 <View style={style.title}>
-                    <Text style={style.title}>{'ADICIONAR PRODUTO           '}</Text>
+                   {/*  <Text style={style.title}>{'ADICIONAR PRODUTO           '}</Text>
                     <Text style={style.subTitle}></Text>
-                    <Text style={style.subTitle}></Text>
+                    <Text style={style.subTitle}></Text> */}
+                    <Image source={require('../../assets/adicionar_header.png')} style={style.imgheader}/>
                 </View>
 
-                <View style={style.logo}>
+               {/*  <View style={style.logo}>
                     <Image source={require('../../assets/logoLogin.png')} style={style.logo} />
-                </View>
+                </View> */}
 
                 
                 <View style={style.inputView}>
@@ -251,7 +252,7 @@ export default class ListProduct extends React.Component {
                     <View style={style.addProduct}>
                         <TouchableOpacity onPress={this.ListPress.bind(this)}>
                             <Feather style={style.imglist} name="list" size={28} color="#E82041" />
-                            <Text style={style.listProductText}>{'LISTAR \nPRODUTO'}</Text>
+                            <Text style={style.listProductText}>{'LISTAR \nPRODUTOS'}</Text>
                         </TouchableOpacity>
 
                         {/*  <TouchableOpacity onPress={() => { }}>

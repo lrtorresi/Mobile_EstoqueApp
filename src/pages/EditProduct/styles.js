@@ -8,7 +8,7 @@ export default StyleSheet.create({
         //paddingHorizontal: 24,
     },
 
-    title: {
+   /*  title: {
         paddingTop: Constants.statusBarHeight + 5,
         justifyContent: 'center',
         alignItems: 'center',
@@ -16,6 +16,19 @@ export default StyleSheet.create({
         color: '#fff',
         fontSize: 19.8,
         fontWeight: 'bold',
+    }, */
+
+    title: {
+        paddingTop: Constants.statusBarHeight + 0,
+        backgroundColor: '#01273e',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    
+    imgheader: {
+        resizeMode: 'cover',
+        width: 385,
+        height: 100,
     },
 
     logo: {
@@ -33,7 +46,7 @@ export default StyleSheet.create({
     },
 
     inputView: {
-        marginTop: -85,
+        marginTop: -15,
     },
 
     Input: {

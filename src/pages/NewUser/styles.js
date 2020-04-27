@@ -10,13 +10,16 @@ export default StyleSheet.create({
     },
 
     title: {
-        paddingTop: Constants.statusBarHeight + 5,
+        paddingTop: Constants.statusBarHeight + 0,
+        backgroundColor: '#01273e',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#01273e',
-        color: '#fff',
-        fontSize: 19.8,
-        fontWeight: 'bold',
+    },
+
+    imgheader: {
+        resizeMode: 'cover',
+        width: 385,
+        height: 100,
     },
 
     logo: {
@@ -24,7 +27,7 @@ export default StyleSheet.create({
         left: 145,
         width: 75,
         height: 75,
-      },
+    },
 
     subTitle: {
         alignItems: 'center',
@@ -34,11 +37,14 @@ export default StyleSheet.create({
     },
 
     formTextTitle: {
-        marginTop: -30,
-        fontSize: 19,
+        marginTop: 5,
+        padding: 10,
+        fontSize: 20,
         color: '#000000',
+        justifyContent: 'center',
         alignItems: 'center',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        
     },
 
     form: {
@@ -63,18 +69,18 @@ export default StyleSheet.create({
     buttonText: {
         fontSize: 18,
         fontWeight: 'bold',
-      },
+    },
 
-      createUser:{
+    createUser: {
         marginTop: 50,
         alignItems: 'center'
-      },
+    },
 
-      link:{
+    link: {
         fontWeight: 'bold',
         textDecorationLine: 'underline',
         fontSize: 17
-      }
+    }
 
 
 

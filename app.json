@@ -1,11 +1,10 @@
 {
   "expo": {
-    "name": "App Estoque",
-    "slug": "appEstoque",
+    "name": "Estoque Life",
+    "slug": "EstoqueLife",
     "platforms": [
       "ios",
-      "android",
-      "web"
+      "android"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -22,7 +21,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mdc.estoquelife"
+    },
+    "android": {
+      "package": "com.mdc.estoquelife",
+      "versionCode": 1
     }
   }
 }

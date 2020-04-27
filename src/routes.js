@@ -21,7 +21,7 @@ export default function Routes() {
     return (
         <NavigationContainer>
 
-            <AppStack.Navigator screenOptions={{ headerShown: false }}>
+            <AppStack.Navigator screenOptions={{ headerShown: false,  gestureEnabled: false }}>
                 <AppStack.Screen name="Login" component={Login} />
                 <AppStack.Screen name="Recover" component={Recover} />
                 <AppStack.Screen name="NewUser" component={NewUser} />

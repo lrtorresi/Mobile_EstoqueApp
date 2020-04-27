@@ -10,8 +10,6 @@ import api from '../../services/api';
 
 export default class Recover extends React.Component {
 
-
-
     static navigationOptions = {
         header: null,
     };
@@ -34,6 +32,9 @@ export default class Recover extends React.Component {
         this.props.navigation.navigate('Login'); // navigate to Edit screen!
     }
 
+    LoginButtonPress = () => {
+        this.props.navigation.goBack(); // 
+    }
 
     handleEmailChange = (email) => {
         this.setState({ email });
@@ -46,7 +47,7 @@ export default class Recover extends React.Component {
             this.setState({ error: 'Preencha com seu e-mail!' }, () => false);
 
             Alert.alert(
-                'MDC Software',
+                '',
                 'Preencha com seu e-mail!',
                 [
                     {
@@ -67,7 +68,7 @@ export default class Recover extends React.Component {
                 this.setState({ success: 'E-mail enviaco com sucesso! Redirecionando para a tela de login', error: '' });
 
                 Alert.alert(
-                    'MDC Software',
+                    '',
                     'Sua senha foi enviada para seu e-mail. \n Verifique seu e-mail.',
                     [
                         { text: 'OK', onPress: () => { setTimeout(this.goToLogin, 200); } },
@@ -81,7 +82,7 @@ export default class Recover extends React.Component {
                 this.setState({ error: 'Houve um problema no envio do e-mail, verifique os dados preenchidos!' });
 
                 Alert.alert(
-                    'MDC Software',
+                    '',
                     'Houve um problema no envio do e-mail, verifique os dados preenchidos!',
                     [
                         {
@@ -111,14 +112,15 @@ export default class Recover extends React.Component {
             <KeyboardAvoidingView style={style.container} enabled={Platform.OS == 'ios'} behavior={Platform.select({ ios: 'padding', android: null, })}>
 
                 <View style={style.title}>
-                    <Text style={style.title}>{'ESQUECEU A SENHA?            '}</Text>
+                    {/* <Text style={style.title}>{'ESQUECEU A SENHA?            '}</Text>
                     <Text style={style.subTitle}></Text>
-                    <Text style={style.subTitle}></Text>
+                    <Text style={style.subTitle}></Text> */}
+                      <Image source={require('../../assets/esqueceu_header.png')} style={style.imgheader}/>
                 </View>
 
-                <View style={style.logo}>
+                {/* <View style={style.logo}>
                     <Image source={require('../../assets/logoLogin.png')} style={style.logo} />
-                </View>
+                </View> */}
 
                 <View style={style.formTextTitle}>
                     <Text style={style.formTextTitle}>Informe seu e-mail e enviaremos as instruções para você criar sua senha.</Text>
@@ -140,6 +142,12 @@ export default class Recover extends React.Component {
                 <TouchableOpacity style={style.button} onPress={this.handleRecoverPress}>
                     <Text style={style.buttonText}> ENVIAR </Text>
                 </TouchableOpacity>
+
+                <View style={style.createUser}>
+                    <TouchableOpacity onPress={this.LoginButtonPress.bind(this)}>
+                        <Text style={style.link}> Voltar para Login</Text>
+                    </TouchableOpacity>
+                </View>
 
 
             </KeyboardAvoidingView>

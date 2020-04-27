@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, View, Text, Image, ImageBackground, KeyboardAvoidingView, TouchableOpacity, Alert, StatusBar } from 'react-native';
+import { Platform, View, Text, Image, ImageBackground, KeyboardAvoidingView, TouchableOpacity, Alert, StatusBar, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { TextInput, Button } from 'react-native-paper';
@@ -61,7 +61,7 @@ export default class NewUser extends React.Component {
             this.setState({ error: 'Preencha todos os campos para continuar!' }, () => false);
 
             Alert.alert(
-                'MDC Software',
+                '',
                 'Preencha todos os campos para continuar!',
                 [
                     {
@@ -85,7 +85,7 @@ export default class NewUser extends React.Component {
                 this.setState({ success: 'Conta criada com sucesso! Redirecionando para o login', error: '' });
 
                 Alert.alert(
-                    'MDC Software',
+                    '',
                     'Usuário cadastrado com sucesso!',
                     [
                         {
@@ -104,7 +104,7 @@ export default class NewUser extends React.Component {
                 this.setState({ error: 'Houve um problema com o cadastro, verifique os dados preenchidos!' });
 
                 Alert.alert(
-                    'MDC Software',
+                    '',
                     'Houve um problema com o cadastro, verifique os dados preenchidos!',
                     [
                         {
@@ -143,18 +143,20 @@ export default class NewUser extends React.Component {
         return (
             <KeyboardAvoidingView style={style.container} enabled={Platform.OS == 'ios'} behavior={Platform.select({ ios: 'padding', android: null, })}>
 
+           
                 <View style={style.title}>
-                    <Text style={style.title}>{'CADASTRO DE USUÁRIO        '}</Text>
+                   {/*  <Text style={style.title}>{'CADASTRO DE USUÁRIO        '}</Text>
                     <Text style={style.subTitle}></Text>
-                    <Text style={style.subTitle}></Text>
+                    <Text style={style.subTitle}></Text> */}
+                     <Image source={require('../../assets/header_cadastro_de_usuario.png')} style={style.imgheader}/>
                 </View>
 
-                <View style={style.logo}>
+               {/*  <View style={style.logo}>
                     <Image source={require('../../assets/logoLogin.png')} style={style.logo} />
-                </View>
+                </View> */}
 
                 <View style={style.formTextTitle}>
-                    <Text style={style.formTextTitle}>Para começar, precisamos de algumas informações:</Text>
+                    <Text style={style.formTextTitle}>Inclua as informações abaixo para começar:</Text>
                 </View>
 
                 <View style={style.form}>
