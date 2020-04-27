@@ -124,6 +124,21 @@ export default StyleSheet.create({
         color: '#ffa300'
     },
 
+    incidentValueEmpty: {
+        padding: 5,
+        alignItems: 'center',
+        left: 17,
+        marginTop: 8,
+        fontSize: 20,
+        //color: '#737380',
+        color: '#000000'
+    },
+
+    setaNew: {
+        alignItems: 'center',
+        marginVertical: 230,
+    },
+
     incidentValue: {
         left: 17,
         marginTop: 8,
@@ -131,6 +146,7 @@ export default StyleSheet.create({
         //color: '#737380',
         color: '#000000'
     },
+
 
     imgedit: {
         top: -50,

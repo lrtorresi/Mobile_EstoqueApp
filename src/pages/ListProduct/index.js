@@ -23,6 +23,7 @@ export default class App extends Component {
         const Id = await AsyncStorage.getItem("mykey");
         const url = `https://apinodejsestoqueapp.herokuapp.com/products/${Id}`;
 
+        const produtosEmpty = 'Olá, cadastre seu primeiro produto e começe a controlar a validade de seus produtos.'
         const response = await fetch(url)
             .then(response => response.json())
             .then(responseJson => {
@@ -36,6 +37,28 @@ export default class App extends Component {
                         this.arrayholder = responseJson;
                     }
                 );
+
+                if(responseJson.length > 0){
+                    console.log('Tem produtos cadastrados')
+                }
+                else{
+                    console.log('Não tem produtos cadastrados.')
+                    responseJson = [{
+                    "Name": produtosEmpty,
+                    "UserId": `${Id}`,}];
+
+                    this.setState(
+                        {
+                            method: "GET",
+                            isLoading: false,
+                            dataSource: responseJson
+                        },
+                        function () {
+                            this.arrayholder = responseJson;
+                        }
+                    );
+                   console.log(this.dataSource)
+                }
             })
             .catch(error => {
                 console.error(error);
@@ -75,7 +98,6 @@ export default class App extends Component {
 
     CreatePress() {
         this.props.navigation.push('CreateProduct');
-
         //this.props.navigation.navigate('CreateProduct'); // navigate to Edit screen!
     }
 
@@ -133,6 +155,18 @@ export default class App extends Component {
                         data={this.state.dataSource}
                         ItemSeparatorComponent={this.FlatListItemSeparator}
                         renderItem={({ item }) => {
+
+                            if(item.Name == 'Olá, cadastre seu primeiro produto e começe a controlar a validade de seus produtos.'){
+                                return <View>
+                                        <Text style={style.incidentValueEmpty}>{item.Name}</Text>
+                                        <View style={style.setaNew}>
+                                        <Feather name="arrow-down" size={45} color="#000000" />
+                                        </View>
+                                    </View>
+                                   
+                                        
+                                   
+                            }
 
                             var DataAtual = parseInt(Moment().utc().format('YYYYMMDD'));
                             var DataVencido = parseInt(Moment(item.DateDue).utc().format('YYYYMMDD'));
